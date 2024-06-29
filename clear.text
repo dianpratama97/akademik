@@ -3,3 +3,9 @@ php artisan route:clear
 php artisan view:clear
 php artisan config:clear
 
+git add .
+git commit -m "update new"
+git push -u origin master
+git remote add origin https://github.com/dianpratama97/akademik.git -> lansung git push
+
+ln -s /smknsin1/akademik.smkn1singkep.sch.id/storage/app/public /smknsin1/akademik.smkn1singkep.sch.id/public/akademik.smkn1singkep.sch.id

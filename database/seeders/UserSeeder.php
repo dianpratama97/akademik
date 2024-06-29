@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $default_user = [
-            'password' => static::$password ??= Hash::make('123123123'),
+            'password' => static::$password ??= Hash::make('Smkn1singkep'),
         ];
         $admin = User::create(array_merge([
             'name' => 'Admin',
@@ -27,20 +27,20 @@ class UserSeeder extends Seeder
             'role' => 'admin',
         ], $default_user));
 
-        $staff = User::create(array_merge([
-            'name' => 'Staff',
-            'email' => 'staff@gmail.com',
-            'username' => '123',
-            'status_biodata' => 0,
-            'role' => 'staff',
-        ], $default_user));
+        // $staff = User::create(array_merge([
+        //     'name' => 'Staff',
+        //     'email' => 'staff@gmail.com',
+        //     'username' => '123',
+        //     'status_biodata' => 0,
+        //     'role' => 'staff',
+        // ], $default_user));
 
-        $siswa = User::create(array_merge([
-            'name' => 'Siswa',
-            'email' => 'siswa@gmail.com',
-            'username' => '1234',
-            'status_biodata' => 0,
-            'role' => 'siswa',
-        ], $default_user));
+        // $siswa = User::create(array_merge([
+        //     'name' => 'Siswa',
+        //     'email' => 'siswa@gmail.com',
+        //     'username' => '1234',
+        //     'status_biodata' => 0,
+        //     'role' => 'siswa',
+        // ], $default_user));
     }
 }
