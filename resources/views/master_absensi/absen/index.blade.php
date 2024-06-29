@@ -9,7 +9,7 @@
             <div class="form-group row col-md-6 ml-auto mr-auto">
                 <label for="inputPassword" class="col-sm-3 col-form-label">TANGGAL</label>
                 <div class="col-sm-8">
-                    <input type="text" name="tanggal" value="" id="tanggal" class="form-control form-control-sm"
+                    <input type="date" name="tanggal" value="" id="tanggal" class="form-control form-control-sm"
                         placeholder="Tanggl Absen" autocomplete="off">
                 </div>
             </div>
@@ -45,7 +45,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 @endpush
 
-@push('javascript')
+@push('js-internal')
     <script>
         $(function() {
             $("#tanggal").datepicker({

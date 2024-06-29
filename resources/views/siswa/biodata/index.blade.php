@@ -18,28 +18,28 @@
                 <div class="row">
                     {{-- col 1 --}}
                     <div class="col-md-2">
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="nama_siswa">Nama Siswa</label>
-                            <input type="text" class="form-control form-control-sm" value="{{ Auth::user()->name }}"
+                            <input type="text" class="form-control" value="{{ Auth::user()->name }}"
                                 readonly>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="username">Nomor Induk Siswa Nasional (NISN)</label>
-                            <input type="text" class="form-control form-control-sm" value="{{ Auth::user()->username }}"
+                            <input type="text" class="form-control" value="{{ Auth::user()->username }}"
                                 readonly>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="email">Email Aktif</label>
-                            <input type="email" class="form-control form-control-sm @error('email') is-invalid @enderror"
+                            <input type="email" class="form-control @error('email') is-invalid @enderror"
                                 name="email" value="{{ old('email') }}">
                             @error('email')
                                 <small class='text-danger'>{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="gender">Jenis Kelamin</label>
                             <select name="gender" id="gender"
-                                class="form-control form-control-sm @error('gender') is-invalid @enderror">
+                                class="form-control @error('gender') is-invalid @enderror">
                                 <option value="">--pilih--</option>
                                 <option value="Laki-laki">Laki-laki</option>
                                 <option value="Perempuan">Perempuan</option>
@@ -48,10 +48,10 @@
                                 <small class='text-danger'>{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="tahun_masuk">Tahun Masuk</label>
                             <input type="number"
-                                class="form-control form-control-sm @error('tahun_masuk') is-invalid @enderror"
+                                class="form-control @error('tahun_masuk') is-invalid @enderror"
                                 name="tahun_masuk" value="{{ old('tahun_masuk') }}">
                             @error('tahun_masuk')
                                 <small class='text-danger'>{{ $message }}</small>
@@ -64,10 +64,10 @@
                     <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group mb-2">
                                     <label for="tempat_lahir">Tempat Lahir</label>
                                     <input type="text"
-                                        class="form-control form-control-sm @error('tempat_lahir') is-invalid @enderror"
+                                        class="form-control @error('tempat_lahir') is-invalid @enderror"
                                         name="tempat_lahir" value="{{ old('tempat_lahir') }}">
                                     @error('tempat_lahir')
                                         <small class='text-danger'>{{ $message }}</small>
@@ -75,10 +75,10 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group mb-2">
                                     <label for="tanggal_lahir">Tanggal Lahir</label>
                                     <input type="date"
-                                        class="form-control form-control-sm @error('tanggal_lahir') is-invalid @enderror"
+                                        class="form-control @error('tanggal_lahir') is-invalid @enderror"
                                         name="tanggal_lahir" value="{{ old('tanggal_lahir') }}">
                                     @error('tanggal_lahir')
                                         <small class='text-danger'>{{ $message }}</small>
@@ -86,10 +86,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="agama">Agama</label>
                             <select name="agama" id="agama"
-                                class="form-control form-control-sm @error('agama') is-invalid @enderror">
+                                class="form-control @error('agama') is-invalid @enderror">
                                 <option value="">--pilih--</option>
                                 @foreach ($agama as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -99,10 +99,10 @@
                                 <small class='text-danger'>{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="kelas">Kelas</label>
                             <select name="kelas" id="kelas"
-                                class="form-control form-control-sm @error('kelas') is-invalid @enderror">
+                                class="form-control @error('kelas') is-invalid @enderror">
                                 <option value="">--pilih--</option>
                                 @foreach ($kelas as $item)
                                     <option value="{{ $item->kode_kelas }}">{{ $item->name }}</option>
@@ -112,10 +112,10 @@
                                 <small class='text-danger'>{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="jurusan">Jurusan</label>
                             <select name="jurusan" id="jurusan"
-                                class="form-control form-control-sm @error('jurusan') is-invalid @enderror">
+                                class="form-control @error('jurusan') is-invalid @enderror">
                                 <option value="">--pilih--</option>
                                 @foreach ($jurusan as $item)
                                     <option value="{{ $item->kode_jurusan }}">{{ $item->kode_jurusan }}</option>
@@ -128,6 +128,7 @@
 
                         <div class="row">
                             <div class="col-md-8">
+                                <label for="image">Foto</label>
                                 <input class="form-control @error('image') is-invalid @enderror" type="file"
                                     name="image" value="{{ old('image') }}" id="image" onchange="userProfile()">
                             </div>
@@ -143,46 +144,46 @@
                     </div>
                     {{-- col 3 --}}
                     <div class="col-md-4">
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="alamat">Alamat</label>
                             <input type="text"
-                                class="form-control form-control-sm @error('alamat') is-invalid @enderror" name="alamat"
+                                class="form-control @error('alamat') is-invalid @enderror" name="alamat"
                                 value="{{ old('alamat') }}">
                             @error('alamat')
                                 <small class='text-danger'>{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="kecamatan">Kecamatan</label>
                             <input type="text"
-                                class="form-control form-control-sm @error('kecamatan') is-invalid @enderror"
+                                class="form-control @error('kecamatan') is-invalid @enderror"
                                 name="kecamatan" value="{{ old('kecamatan') }}">
                             @error('kecamatan')
                                 <small class='text-danger'>{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="kabupaten">Kabupaten</label>
                             <input type="text"
-                                class="form-control form-control-sm @error('kabupaten') is-invalid @enderror"
+                                class="form-control @error('kabupaten') is-invalid @enderror"
                                 name="kabupaten" value="{{ old('kabupaten') }}">
                             @error('kabupaten')
                                 <small class='text-danger'>{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="provinsi">Provinsi</label>
                             <input type="text"
-                                class="form-control form-control-sm @error('provinsi') is-invalid @enderror"
+                                class="form-control @error('provinsi') is-invalid @enderror"
                                 name="provinsi" value="{{ old('provinsi') }}">
                             @error('provinsi')
                                 <small class='text-danger'>{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="no_hp_wali">Nomor Hp Orang Tua</label>
                             <input type="number"
-                                class="form-control form-control-sm @error('no_hp_wali') is-invalid @enderror"
+                                class="form-control @error('no_hp_wali') is-invalid @enderror"
                                 name="no_hp_wali" value="{{ old('no_hp_wali') }}">
                             @error('no_hp_wali')
                                 <small class='text-danger'>{{ $message }}</small>

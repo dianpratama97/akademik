@@ -58,7 +58,7 @@ class AbsenController extends Controller
                 }
                 $data = [
                     "user_id" => $user->id,
-                    "jam_masuk" => $jam_masuk,
+                    "jam_masuk" => null,
                     "lokasi" => null,
                     "foto_absen" => null,
                     "tanggal" => $tanggal,
@@ -69,22 +69,24 @@ class AbsenController extends Controller
 
                 Alert::success('Berhasil.', 'Absen Berhasil.');
                 return redirect()->route('dashboard');
-            } else {
+            }
+
+            if (!$request->image == null) {
+                if ($request->status == 'sakit') {
+                    $status_absen = 's';
+                    $jam_masuk = null;
+                    $lokasi = null;
+                } else {
+                    $status_absen = 'h';
+                    $lokasi = $request->lokasi;
+                }
 
                 $folderPath = "public/gambar/foto-absen/";
                 $formatName = $user->username;
                 $image_parts = explode(";base64", $foto_absen);
                 $image_base64 = base64_decode($image_parts[1]);
-                $fileName = $formatName . date('-d-m-y') .".png";
+                $fileName = $formatName . date('-d-m-y') . ".png";
                 $file = $folderPath . $fileName;
-
-                if ($request->status == 'sakit') {
-                    $status_absen = 's';
-                    $keterangan = $request->keterangan;
-                } else {
-                    $status_absen = 'h';
-                    $keterangan = null;
-                }
 
                 $data = [
                     "user_id" => $user->id,
@@ -93,10 +95,10 @@ class AbsenController extends Controller
                     "foto_absen" => $fileName,
                     "tanggal" => $tanggal,
                     "status" => $status_absen,
-                    "keterangan" => $keterangan,
+                    "keterangan" => $request->keterangan,
                 ];
-
                 $simpan = DB::table('absen')->insert($data);
+
                 if ($simpan) {
                     echo 1;
                     Storage::put($file, $image_base64);
@@ -105,6 +107,117 @@ class AbsenController extends Controller
                 }
             }
         }
+    }
+
+    public function store_absen(Request $request)
+    {
+
+        $lokasi = $request->lokasi;
+        $foto_absen = $request->image;
+        $user = User::findOrFail(Auth::user()->id);
+        $jam_masuk = date("H:i");
+        $tanggal = date("Y-m-d");
+
+        if ($request->status == 'hadir') {
+            $data = [
+                "user_id" => $user->id,
+                "jam_masuk" => $jam_masuk,
+                "lokasi" => $lokasi,
+                "foto_absen" => null,
+                "tanggal" => $tanggal,
+                "status" => 'h',
+                "keterangan" => null,
+            ];
+
+            $simpan = DB::table('absen')->insert($data);
+            Alert::success('Berhasil.', 'Absen Berhasil.');
+            return redirect()->route('dashboard');
+        }
+
+        if ($request->image == null) {
+            if ($request->status == 'izin') {
+                $status_absen = 'i';
+            }
+            $data = [
+                "user_id" => $user->id,
+                "jam_masuk" => null,
+                "lokasi" => null,
+                "foto_absen" => null,
+                "tanggal" => $tanggal,
+                "status" => $status_absen,
+                "keterangan" => $request->keterangan,
+            ];
+            $simpan = DB::table('absen')->insert($data);
+
+            Alert::success('Berhasil.', 'Absen Berhasil.');
+            return redirect()->route('dashboard');
+        }
+
+        if (!$request->image == null) {
+            if ($request->status == 'sakit') {
+                $status_absen = 's';
+            }
+
+            $folderPath = "public/gambar/foto-absen/";
+            $formatName = $user->username;
+            $image_parts = explode(";base64", $foto_absen);
+            $image_base64 = base64_decode($image_parts[1]);
+            $fileName = $formatName . date('-d-m-y') . ".png";
+            $file = $folderPath . $fileName;
+
+            $data = [
+                "user_id" => $user->id,
+                "jam_masuk" => null,
+                "lokasi" => null,
+                "foto_absen" => $fileName,
+                "tanggal" => $tanggal,
+                "status" => $status_absen,
+                "keterangan" => $request->keterangan,
+            ];
+            $simpan = DB::table('absen')->insert($data);
+
+            if ($simpan) {
+                echo 1;
+                Storage::put($file, $image_base64);
+            } else {
+                echo 0;
+            }
+        }
+
+
+
+        // $folderPath = "public/gambar/foto-absen/";
+        // $formatName = $user->username;
+        // $image_parts = explode(";base64", $foto_absen);
+        // $image_base64 = base64_decode($image_parts[1]);
+        // $fileName = $formatName . date('-d-m-y') . ".png";
+        // $file = $folderPath . $fileName;
+
+        // if ($request->status == 'sakit') {
+        //     $status_absen = 's';
+        //     $keterangan = $request->keterangan;
+        // } else {
+        //     $status_absen = 'h';
+        //     $keterangan = null;
+        // }
+
+        // $data = [
+        //     "user_id" => $user->id,
+        //     "jam_masuk" => $jam_masuk,
+        //     "lokasi" => $lokasi,
+        //     "foto_absen" => $fileName,
+        //     "tanggal" => $tanggal,
+        //     "status" => $status_absen,
+        //     "keterangan" => $keterangan,
+        // ];
+
+        // $simpan = DB::table('absen')->insert($data);
+        // if ($simpan) {
+        //     echo 1;
+        //     Storage::put($file, $image_base64);
+        // } else {
+        //     echo 0;
+        // }
     }
 
     public function getData(Request $request) //get data status absen/absen js dan filter tanggal

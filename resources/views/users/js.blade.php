@@ -1,14 +1,15 @@
 @push('css')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets') }}/vendors/css/tables/datatable/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets') }}/vendors/css/tables/datatable/responsive.bootstrap5.min.css">
 @endpush
 @push('js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
-    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.js"></script>
+<script src="{{ asset('app-assets') }}/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+<script src="{{ asset('app-assets') }}/vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
+<script src="{{ asset('app-assets') }}/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+<script src="{{ asset('app-assets') }}/vendors/js/tables/datatable/responsive.bootstrap5.min.js"></script>
 @endpush
-@push('javascript')
-    {{ $dataTable->scripts() }}
+@push('js-internal')
+    {!! $dataTable->scripts() !!}
 
     <script>
         $(document).ready(function() {
@@ -41,9 +42,7 @@
         $("#checkAll").click(function() {
             $('input:checkbox').not(this).prop('checked', this.checked);
         });
-
-
-        const modalShow = new bootstrap.Modal($('#modalDetail'));
+        const detail = new bootstrap.Modal($('#modalDetail'));
         const modal = new bootstrap.Modal($('#modalAction'));
         $('#users-table').on('click', '.action', function() {
             let data = $(this).data();
@@ -57,7 +56,7 @@
                     url: `{{ url('users/') }}/${id}`,
                     success: function(response) {
                         $('#modalDetail').find('.modal-detail').html(response);
-                        modalShow.show();
+                        modal - detail.show();
                     }
                 });
                 return
@@ -96,6 +95,7 @@
                 });
                 return
             }
+
             $.ajax({
                 method: 'get',
                 url: `{{ url('users/') }}/${id}/edit`,

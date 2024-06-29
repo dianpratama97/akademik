@@ -4,7 +4,7 @@
 
 <div class="card">
     <div class="card-header">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah">
+        <button type="button" class="btn btn-relief-primary" data-bs-toggle="modal" data-bs-target="#tambah">
             Tambah
         </button>
     </div>
@@ -29,8 +29,8 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"
-                                    class="btn btn-sm action btn-rounded btn-danger delete-confirm"><i
-                                        class="mdi mdi-close-circle"></i></button>
+                                    class="btn btn-sm action  btn-relief-danger delete-confirm"><i
+                                        class="fa fa-trash"></i></button>
                             </form>
                         </td>
                     </tr>

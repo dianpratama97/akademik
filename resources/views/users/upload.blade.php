@@ -11,8 +11,8 @@
                     <input type="file" name="excel" id="excel" class="form-control file-upload-info">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-gradient-danger" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-gradient-primary">Upload</button>
+                    <button type="button" class="btn btn-relief-danger" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-relief-primary">Upload</button>
                 </div>
             </form>
         </div>

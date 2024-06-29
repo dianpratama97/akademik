@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('absen', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('jam_masuk');
-            $table->string('tanggal');
+            $table->string('jam_masuk')->nullable();;
+            $table->string('tanggal')->nullable();;
             $table->text('lokasi')->nullable();
             $table->string('foto_absen')->nullable();
             $table->string('status')->nullable();

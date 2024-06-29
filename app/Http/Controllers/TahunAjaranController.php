@@ -56,6 +56,9 @@ class TahunAjaranController extends Controller
 
     public function destroy(TahunAjaran $tahunAjaran)
     {
-        //
+       
+        TahunAjaran::destroy($tahunAjaran->id);
+        Alert::success('Berhasil.', 'Data Berhasil Dihapus.');
+        return redirect()->route('tahunAjaran.index');
     }
 }

@@ -6,8 +6,8 @@
             {{ csrf_field() }}
             <div class="card-header">
                 <h4 class="card-title">
-                    <a href="" class="btn btn-warning btn-sm"><i class="fas fa-users"></i>KEMBALI</a>
-                    <button type="submit" class="btn btn-danger btn-sm">
+                    <a href="" class="btn btn-relief-warning btn-sm"><i class="fas fa-users"></i>KEMBALI</a>
+                    <button type="submit" class="btn btn-relief-danger btn-sm">
                         <i class="fa fa-times"></i> HAPUS DATA
                     </button>
                 </h4>

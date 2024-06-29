@@ -37,6 +37,7 @@ class UsersController extends Controller
 
     public function store(UserCreateRequest $request)
     {
+      
         $user = User::create([
             "name" => $request->name,
             "email" => $request->email,
@@ -110,5 +111,4 @@ class UsersController extends Controller
     {
         return view('users.detail', compact('user'));
     }
-
 }

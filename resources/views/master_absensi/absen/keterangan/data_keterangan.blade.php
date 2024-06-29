@@ -18,7 +18,7 @@
             <td>{{ $item->keterangan }}</td>
             <td>
                 <button type="button" data-id='{{ $item->id }}' data-jenis="show"
-                    class="btn btn-sm action btn-rounded btn-info"><i class="mdi mdi-eye"></i></button>
+                    class="btn btn-sm action  btn-relief-info"><i class="fa fa-eye"></i></button>
             </td>
         </tr>
     @endforeach

@@ -120,7 +120,7 @@
 @push('js')
     <script src="{{ asset('assets') }}/ckeditor/ckeditor.js"></script>
 @endpush
-@push('javascript')
+@push('js-internal')
     <script>
         //image preview
         function ttdKepsek() {

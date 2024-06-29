@@ -3,10 +3,10 @@
 @section('content')
     <div class="row mb-2">
         <div class="col-md-6">
-            <a href="{{ route('absensi.rekap') }}" class="btn btn-block btn-success">DATA REKAP</a>
+            <a href="{{ route('absensi.rekap') }}" class="btn btn-block btn-relief-success">DATA REKAP</a>
         </div>
         <div class="col-md-6">
-            <a href="{{ route('absensi.sakit') }}" class="btn btn-block btn-primary">DATA SAKIT</a>
+            <a href="{{ route('absensi.sakit') }}" class="btn btn-block btn-relief-primary">DATA SAKIT</a>
         </div>
     </div>
     <div class="card">
@@ -15,7 +15,7 @@
             <div class="card-header">
                 <h2 class="text-center">REKAP IZIN</h2>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-md-3">
                         <select name="bulan" id="bulan" class="form-control form-control-sm">
                             <option value="01">Januari</option>
                             <option value="02">Februari</option>
@@ -31,18 +31,18 @@
                             <option value="12">Desember</option>
                         </select>
                     </div>
-                    <div class="col">
+                    <div class="col-md-3">
                         <input type="number" id="tahun" class="form-control form-control-sm" name="tahun"
                             placeholder="Tahun 1945">
                     </div>
-                    <div class="col">
+                    <div class="col-md-3">
                         <select name="kelas" id="kelas" class="form-control form-control-sm">
                             <option value="10">10</option>
                             <option value="11">11</option>
                             <option value="12">12</option>
                         </select>
                     </div>
-                    <div class="col">
+                    <div class="col-md-3">
                         <select name="jurusan" id="jurusan" class="form-control form-control-sm">
                             <option value="DKV">DKV</option>
                             <option value="TKJ">TKJ</option>
@@ -50,8 +50,8 @@
                             <option value="TSM">TSM</option>
                         </select>
                     </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-sm ml-3 btn-gradient-success btn-submit">TAMPIL DATA</button>
+                    <div class="col-md-4 mt-1">
+                        <button type="submit" class="btn btn-sm ml-3 btn-relief-success btn-submit">TAMPIL DATA</button>
                     </div>
                 </div>
                 <input type="hidden" id="input_keterangan" name="input_keterangan" value="i">
@@ -67,7 +67,7 @@
 @endsection
 
 
-@push('javascript')
+@push('js-internal')
 
     <script type="text/javascript">
         $(document).ready(function() {

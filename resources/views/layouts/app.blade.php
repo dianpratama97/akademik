@@ -1,100 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
 
 <head>
-    <!-- Required meta tags -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
+    <meta name="description"
+        content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords"
+        content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="PIXINVENT">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>Purple Admin</title>
 
-    <!-- plugins:css -->
-    <link rel="stylesheet" href="{{ asset('') }}/assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="{{ asset('') }}/assets/vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
+    <title>AKADEMIK</title>
+    @include('components.css')
 
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="{{ asset('') }}/assets/css/style.css">
-    <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{ asset('') }}/assets/images/favicon.ico" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
-        integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <!-- css -->
-    @stack('css')
-    <!-- End css -->
 </head>
+<!-- END: Head-->
 
-<body>
-    <div class="container-scroller">
+<!-- BEGIN: Body-->
 
-        <!-- navbar -->
-        @include('components.nav')
-        <!-- end-navbar -->
+<body class="vertical-layout vertical-menu-modern  navbar-floating footer-static" data-open="click"
+    data-menu="vertical-menu-modern" data-col="" style="text-transform: capitalize;">
 
-        <div class="container-fluid page-body-wrapper">
+    <!-- BEGIN: Header-->
+    @include('components.nav')
+    <!-- END: Header-->
 
-            <!-- sidebar -->
-            @include('components.sidebar')
-            <!-- end-sidebar -->
 
-            {{-- content --}}
-            <div class="main-panel">
-                <div class="content-wrapper">
-                    <div class="alert alert-primary text-capitalize">@yield('title')</div>
-                    @yield('content')
+    <!-- BEGIN: Main Menu-->
+    @include('components.menu')
+    <!-- END: Main Menu-->
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="alert alert-primary" role="alert">
+                    <div class="alert-body">
+                        <h4>@yield('title')</h4>
+                    </div>
                 </div>
-                <!-- footer -->
-                @include('components.footer')
-                <!-- footer -->
             </div>
-            <!-- end-content -->
-
+            <div class="content-body">
+                @yield('content')
+            </div>
         </div>
-
     </div>
+    <!-- END: Content-->
 
-    <!-- plugins:js -->
-    <script src="{{ asset('') }}/assets/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
 
-    <!-- inject:js -->
-    <script src="{{ asset('') }}/assets/js/off-canvas.js"></script>
-    <script src="{{ asset('') }}/assets/js/hoverable-collapse.js"></script>
-    <script src="{{ asset('') }}/assets/js/misc.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- endinject -->
+    <!-- BEGIN: Footer-->
+    @include('components.footer')
+    <!-- END: Footer-->
 
-    <!-- js-page -->
-    @stack('js')
-    <!-- End js-page -->
-
-    <!-- javascript -->
-    @stack('javascript')
-    <!-- End javascript -->
-    @include('sweetalert::alert')
-
-    {{-- auto logout --}}
-    <script>
-        // autologout.js
-
-        $(document).ready(function() {
-            const timeout = 43200000; // 900000 ms = 15 minutes //12 jam
-            var idleTimer = null;
-            $('*').bind(
-                'mousemove click mouseup mousedown keydown keypress keyup submit change mouseenter scroll resize dblclick',
-                function() {
-                    clearTimeout(idleTimer);
-
-                    idleTimer = setTimeout(function() {
-                        document.getElementById('auto-logout').submit();
-                    }, timeout);
-                });
-            $("body").trigger("mousemove");
-        });
-    </script>
+    @include('components.js')
 </body>
+<!-- END: Body-->
 
 </html>

@@ -6,7 +6,7 @@
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Data User</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ url('/users/store') }}" method="POST">
+            <form action="{{ route('users.store') }}" method="POST">
                 @csrf
                 <div class="modal-body">
                     <div class="row">
@@ -35,13 +35,13 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="status">Status Biodata</label>
-                                <select name="status" id="status" class="form-control">
+                                <label for="status_biodata">Status Biodata</label>
+                                <select name="status_biodata" id="status_biodata" class="form-control">
                                     <option value="">--pilih--</option>
                                     <option value="0">Tidak Aktif</option>
                                     <option value="1">Aktif</option>
                                 </select>
-                                @error('status')
+                                @error('status_biodata')
                                     <small class='text-danger'>{{ $message }}</small>
                                 @enderror
                             </div>
@@ -77,8 +77,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-gradient-danger" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-gradient-success">Simpan</button>
+                    <button type="button" class="btn btn-relief-danger" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-relief-success">Simpan</button>
                 </div>
             </form>
         </div>

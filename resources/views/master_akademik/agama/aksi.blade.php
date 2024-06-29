@@ -19,8 +19,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-gradient-danger" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-gradient-success">Simpan</button>
+                    <button type="button" class="btn btn-relief-danger" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-relief-success">Simpan</button>
                 </div>
             </form>
         </div>
@@ -29,7 +29,7 @@
 
 {{-- hapus --}}
 
-@push('javascript')
+@push('js-internal')
     <script>
         $(document).ready(function() {
             //event : Delete

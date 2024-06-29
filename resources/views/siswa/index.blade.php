@@ -19,11 +19,10 @@
         <div class="card" style="height: 5.5cm;">
             <div class="card-body">
                 <img src="{{ asset('assets/images/1.png') }}"
-                    style="width: 319px; position: absolute; margin-top: -20px; margin-left: -20px">
-
-
+                style="width: 319px; position: absolute; margin-top: -20px; margin-left: -20px">
                 <p class="text-center" style="font-size: 8px; font-weight: bolder; margin-top: 25px"><u>KARTU
                         PELAJAR</u></p>
+                        
                 <table style="font-size: 8px; margin-top: -10px;font-family: arial;">
                     <tr>
                         <td>NAMA SISWA</td>
@@ -52,17 +51,17 @@
                         <td>{{ Auth::user()->biodata->alamat }}</td>
                     </tr>
                 </table>
-
+                
                 <p style="position: absolute;font-size: 10px; font-family: arial; margin-left: 1px"><b>KELAS
                         :{{ Auth::user()->kelas }}
                         - {{ Auth::user()->jurusan }}</b></p>
 
                 @if (auth()->user()->biodata->image == null)
                     <img src="https://cbt.e-smanpul.com/images/user_siswa.png"
-                        style="position: absolute; width: 60px;  margin-top: -70px; margin-left: 200px">
+                        style="position: absolute; width: 60px;  margin-top: -70px; margin-left: 210px">
                 @else
                     <img src="{{ asset('storage/gambar/users/' . auth()->user()->biodata->image) }}"
-                        style="position: absolute; width: 60px; height: 70px; margin-top: -70px; margin-left: 200px">
+                        style="position: absolute; width: 60px; height: 70px; margin-top: -70px; margin-left: 210px">
                 @endif
 
                 {{-- <hr style="margin-bottom: 10px"> --}}

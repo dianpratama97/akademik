@@ -17,7 +17,7 @@ use App\Http\Controllers\TahunAjaranController;
 Route::get('/', function () {
     return view('welcome');
     // return view('auth.login');
-});
+})->name('welcome');
 
 
 
@@ -47,10 +47,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/biodata/edit/{id}', [BiodataController::class, 'edit'])->name('biodata.edit');
     Route::put('/biodata/update/{id}', [BiodataController::class, 'update'])->name('biodata.update');
 
-    //agama
+    //config
     Route::resource('/config', ConfigController::class);
 
-    //agama
+    //tahun ajaran
     Route::resource('/tahunAjaran', TahunAjaranController::class);
 
     //cetak kartu
@@ -58,7 +58,7 @@ Route::middleware('auth')->group(function () {
 
     //absen
     Route::get('/absensi/dashboard', [AbsenController::class, 'absen_siswa'])->name('dashboard.absensi');
-    // Route::get('/absensi/ambil', [AbsenController::class, 'halaman_absen'])->name('absensi.siswa');
+    Route::post('/absensi/store_absen', [AbsenController::class, 'store_absen'])->name('absensi.store_absen');
 
     Route::post('/absensi/getData', [AbsenController::class, 'getData'])->name('absensi.getData'); //ambil data berdasar tanggal
     Route::get('/absensi/hapus', [AbsenController::class, 'halaman_hapus'])->name('absensi.hapus');

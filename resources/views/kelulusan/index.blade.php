@@ -10,12 +10,17 @@
                 <div class="card " style="width: 25rem;">
                     <ul class="list-group list-group-flush ">
                         <li class="list-group-item d-grid gap-2">
-                            <button type="button" class="btn btn-gradient-success btn-sm btn-block text-capitalize"
+                            <button type="button" class="btn btn-relief-success btn-sm btn-block text-capitalize"
                                 data-bs-toggle="modal" data-bs-target="#modal-upload">upload excel</button>
                         </li>
                         <li class="list-group-item d-grid gap-2">
-                            <button type="button" class="btn btn-gradient-primary btn-sm btn-block text-capitalize"
+                            <button type="button" class="btn btn-relief-primary btn-sm btn-block text-capitalize"
                                 data-bs-toggle="modal" data-bs-target="#modal-tambah">tambah</button>
+                        </li>
+                        <li class="list-group-item d-grid gap-2">
+                            <a href="{{ asset('berkas/format_kelulusan.xlsx') }}"
+                                class="btn btn-relief-primary btn-sm btn-block text-capitalize">Download Format
+                                Kelulusan</a>
                         </li>
                         <li class="list-group-item">
                             <div class="row">
@@ -65,11 +70,18 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->nisn }}</td>
-                                <td>{{ $item->status_lulus == 1 ? 'LULUS' : 'TIDAK LULUS' }}</td>
+                                <td>
+
+                                    @if ($item->status_lulus == 1)
+                                    <span class="badge badge-glow bg-success">Lulus</span>
+                                    @else
+                                    <span class="badge badge-glow bg-danger">Tidak Lulus</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <button type="button" data-id='{{ $item->id }}' data-jenis="show"
-                                        class="btn btn-sm action btn-rounded btn-gradient-info"><i
-                                            class="mdi mdi-pencil"></i></button>
+                                        class="btn btn-sm action btn-relief-info"><i
+                                            class="fa fa-pencil"></i></button>
                                 </td>
                             </tr>
                         @endforeach
@@ -93,7 +105,7 @@
 
     </div>
 @endsection
-@push('javascript')
+@push('js-internal')
     <script>
         $(document).ready(function() {
             //event : Delete

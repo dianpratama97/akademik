@@ -15,11 +15,6 @@ use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 
 class UsersDataTable extends DataTable
 {
-    /**
-     * Build the DataTable class.
-     *
-     * @param QueryBuilder $query Results from query() method.
-     */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
@@ -27,9 +22,9 @@ class UsersDataTable extends DataTable
             ->addColumn('action', 'users.action')
             ->setRowId('id')
             ->addColumn('action', function ($row) {
-                $data = '<button type="button" data-id=' . $row->id . ' data-jenis="edit"  class="btn btn-sm action btn-rounded btn-warning"><i class="mdi mdi-lead-pencil"></i></button>';
-                $data .= ' <button type="button" data-id=' . $row->id . ' data-jenis="delete" class="btn btn-sm action btn-rounded btn-danger"><i class="mdi mdi-close-circle"></i></button>';
-                $data .= ' <button type="button" data-id=' . $row->id . ' data-jenis="show" class="btn btn-sm action btn-rounded btn-info"><i class="mdi mdi-eye"></i></button>';
+                $data = '<button type="button" data-id=' . $row->id . ' data-jenis="edit"  class="btn btn-sm action btn-rounded btn-relief-warning"><i class="fa-solid fa-pencil"></i></button>';
+                $data .= ' <button type="button" data-id=' . $row->id . ' data-jenis="delete" class="btn btn-sm action btn-rounded btn-relief-danger"><i class="fa-solid  fa-trash"></i></button>';
+                $data .= ' <button type="button" data-id=' . $row->id . ' data-jenis="show" class="btn btn-sm action btn-rounded btn-relief-info"><i class="fa-solid  fa-eye"></i></button>';
                 return $data;
             })
             ->addColumn('checkbox', function ($row) {
@@ -53,11 +48,11 @@ class UsersDataTable extends DataTable
             })
             ->addColumn('status_biodata', function ($row) {
                 if ($row->status_biodata == 0) {
-                    $status_biodata = 'TIDAK LENGKAP';
+                    $status_biodata = '<span class="badge badge-glow bg-danger">Tidak Lengkap</span>';
                 } elseif ($row->status_biodata == 1) {
-                    $status_biodata = 'LENGKAP';
+                    $status_biodata = '<span class="badge badge-glow bg-success">Lengkap</span>';
                 } else {
-                    $status_biodata = 'Reset';
+                    $status_biodata = '<span class="badge badge-glow bg-warning">Reset</span>';
                 }
 
                 return $status_biodata;
@@ -96,26 +91,25 @@ class UsersDataTable extends DataTable
         return [
             Column::make('DT_RowIndex')->title('No')->searchable(false)->orderable(false),
             Column::make('name'),
-            Column::make('email'),
             Column::make('username'),
             Column::make('role'),
             Column::make('waktu_login'),
             Column::make('status_biodata')->title('Biodata')
                 ->exportable(false)
                 ->printable(false)
-                ->width(60)
+                ->width(100)
                 ->addClass('text-center'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
-                ->width(60)
+                ->width(200)
                 ->addClass('text-center'),
             Column::computed('checkbox')->title('Pilih')->searchable(false)->orderable(false)
                 ->searchable(false)
                 ->orderable(false)
                 ->exportable(false)
                 ->printable(false)
-                ->width(60)
+                ->width(10)
                 ->addClass('text-center'),
         ];
     }

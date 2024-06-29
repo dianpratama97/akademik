@@ -13,7 +13,7 @@
         <div class="card-body">
             <table class="table table-bordered table-responsive">
                 <tr>
-                    <td width="10%">Nama Kepala Sekolah</td>
+                    <td width="20%">Nama Kepala Sekolah</td>
                     <td width="2%">:</td>
                     <td>{{  $config == null ?  '' : $config->nama_kepsek  }}</td>
                 </tr>
@@ -26,21 +26,21 @@
                     <td>TTD Kepala Sekolah</td>
                     <td>:</td>
                     <td>
-                        <img src="{{  $config == null ?  '' : asset('storage/gambar/configs/' . $config->ttd)  }}">
+                        <img src="{{  $config == null ?  '' : asset('storage/gambar/configs/' . $config->ttd)  }}" width="10%">
                     </td>
                 </tr>
                 <tr>
                     <td>Logo Sekolah</td>
                     <td>:</td>
                     <td>
-                        <img src="{{  $config == null ?  '' : asset('storage/gambar/configs/' . $config->logo)  }}">
+                        <img src="{{  $config == null ?  '' : asset('storage/gambar/configs/' . $config->logo)  }}" width="10%">
                     </td>
                 </tr>
                 <tr>
                     <td>Cap Sekolah</td>
                     <td>:</td>
                     <td>
-                        <img src="{{  $config == null ?  '' : asset('storage/gambar/configs/' . $config->cap)  }}">
+                        <img src="{{  $config == null ?  '' : asset('storage/gambar/configs/' . $config->cap)  }}" width="10%">
                     </td>
                 </tr>
                 <tr>

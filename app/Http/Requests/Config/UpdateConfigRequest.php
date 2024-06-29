@@ -27,10 +27,9 @@ class UpdateConfigRequest extends FormRequest
             'nama_web' => 'required',
             'visi' => 'required',
             'misi' => 'required',
-            'jam' => 'required',
-            "cap" => 'image|file|mimes:png,jpg,jpeg|max:5000',
-            "ttd" => 'image|file|mimes:png,jpg,jpeg|max:5000',
-            "logo" => 'image|file|mimes:png,jpg,jpeg|max:5000',
+            "cap" => 'image|file|mimes:png,jpg,jpeg|max:2048',
+            "ttd" => 'image|file|mimes:png,jpg,jpeg|max:2048',
+            "logo" => 'image|file|mimes:png,jpg,jpeg|max:2048',
         ];
     }
 }

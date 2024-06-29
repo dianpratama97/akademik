@@ -15,7 +15,7 @@
         <table class="table table-bordered mt-3">
 
             <tr>
-                <td width="20%">Nama</td>
+                <td width="30%">Nama</td>
                 <td width="2%">:</td>
                 <td>{{ $user->name }}</td>
             </tr>
@@ -33,15 +33,18 @@
                 <td>Jurusan</td>
                 <td>:</td>
                 <td>
-                    {{ $user->biodata == null ? 'Biodata Kosong' : $user->biodata->jurusan->name }} -
-                    {{ $user->biodata == null ? 'Biodata Kosong' : $user->biodata->jurusan->kode_jurusan }}
+                    @if ($user->biodata == null)
+                        Biodata Kosong
+                    @else
+                        {{ auth()->user()->jurusan }}
+                    @endif
                 </td>
             </tr>
             <tr>
                 <td>Kelas</td>
                 <td>:</td>
                 <td>
-                    {{ $user->biodata == null ? 'Biodata Kosong' : $user->biodata->kelas->name }}
+                    {{ $user->biodata == null ? 'Biodata Kosong' : auth()->user()->kelas }}
                 </td>
             </tr>
             <tr>
