@@ -63,6 +63,7 @@
                         _token: "{{ csrf_token() }}",
                         tanggal: tanggal
                     },
+                    
                     cache: false,
                     success: function(res) {
                         $("#load_data").html(res);

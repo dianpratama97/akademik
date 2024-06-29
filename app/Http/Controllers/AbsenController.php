@@ -229,7 +229,6 @@ class AbsenController extends Controller
             ->where('tanggal', $tanggal)
             ->get();
         $user = User::get();
-
         return view('master_absensi.absen.data', compact('data', 'user', 'tanggal'));
     }
 

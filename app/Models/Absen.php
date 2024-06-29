@@ -11,4 +11,6 @@ class Absen extends Model
     protected $table = 'absen';
     protected $guarded = [];
     public $timestamps = false;
+
+    
 }
