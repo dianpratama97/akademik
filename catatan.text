@@ -9,5 +9,3 @@ git push -u origin master/main
 git remote add origin https://github.com/dianpratama97/akademik.git -> lansung git push
 
 ln -s /smknsin1/akademik.smkn1singkep.sch.id/storage/app/public /smknsin1/akademik.smkn1singkep.sch.id/public/akademik.smkn1singkep.sch.id
-
-tes
