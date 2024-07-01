@@ -1,17 +1,18 @@
 <?php
 
-use App\Http\Controllers\AbsenController;
+use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\AgamaController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\ConfigController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\JurusanController;
-use App\Http\Controllers\KelulusanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KelulusanController;
 use App\Http\Controllers\TahunAjaranController;
 
 Route::get('/', function () {
@@ -28,18 +29,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    Route::get('/users/isLogin', [UsersController::class, 'isLogin'])->name('users.isLogin');
-    Route::resource('/users', UsersController::class);
-    Route::post('/users/store', [UsersController::class, 'store'])->name('users.store');
-    Route::post('/users', [UsersController::class, 'import'])->name('users.import');
-    Route::delete('/hapusAllUser', [UsersController::class, 'hapusAllUser'])->name('users.hapus');
+    Route::get('/users/isLogin', [UsersController::class, 'isLogin'])->name('users.isLogin')->middleware('admin');
+    Route::resource('/users', UsersController::class)->middleware('admin');
+    Route::post('/users/store', [UsersController::class, 'store'])->name('users.store')->middleware('admin');
+    Route::post('/users', [UsersController::class, 'import'])->name('users.import')->middleware('admin');
+    Route::delete('/hapusAllUser', [UsersController::class, 'hapusAllUser'])->name('users.hapus')->middleware('admin');
 
     //agama
-    Route::resource('/agama', AgamaController::class);
+    Route::resource('/agama', AgamaController::class)->middleware('admin');
     //jurusan
-    Route::resource('/jurusan', JurusanController::class);
+    Route::resource('/jurusan', JurusanController::class)->middleware('admin');
     //kelas
-    Route::resource('/kelas', KelasController::class)->names('kelas')->parameters(['kelas' => 'kelas']);
+    Route::resource('/kelas', KelasController::class)->names('kelas')->parameters(['kelas' => 'kelas'])->middleware('admin');
 
     //biodata
     Route::get('/biodata', [BiodataController::class, 'index'])->name('biodata.index');
@@ -48,10 +49,10 @@ Route::middleware('auth')->group(function () {
     Route::put('/biodata/update/{id}', [BiodataController::class, 'update'])->name('biodata.update');
 
     //config
-    Route::resource('/config', ConfigController::class);
+    Route::resource('/config', ConfigController::class)->middleware('admin');
 
     //tahun ajaran
-    Route::resource('/tahunAjaran', TahunAjaranController::class);
+    Route::resource('/tahunAjaran', TahunAjaranController::class)->middleware('admin');
 
     //cetak kartu
     Route::get('/kartu-pelajar', [BiodataController::class, 'cetak'])->name('biodata.cetak');

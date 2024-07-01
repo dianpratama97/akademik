@@ -2,7 +2,6 @@
 @section('title', 'DATA ABSENSI SISWA KELAS 12')
 @section('content')
 
-
     <div class="card">
         <div class="card-header">
             <h2 class="text-center mb-3">STATUS ABSEN</h2>
