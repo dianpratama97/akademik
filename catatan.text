@@ -8,4 +8,5 @@ git commit -m "update new"
 git push -u origin main
 git remote add origin https://github.com/dianpratama97/akademik.git -> lansung git push
 
-ln -s /smknsin1/akademik.smkn1singkep.sch.id/storage/app/public /smknsin1/akademik.smkn1singkep.sch.id/public/akademik.smkn1singkep.sch.id
+
+ln -s /home/smknsing/akademik/storage/app/public /home/smknsing/public_html/akademik.smkn1singkep.sch.id/storage

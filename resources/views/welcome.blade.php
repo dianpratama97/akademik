@@ -4,7 +4,7 @@
         <div class="col-xl-12 col-md-12" style="margin-top: -100px">
             <div class="card card-congratulation-medal" style="height: 70px">
                 <div class="card-body text-center">
-                    <h1>SILAKAN PILIH MENU DI BAWAH</h1>
+                    <h1>SILAKAN PILIH MENU DI BAWAH INI</h1>
                 </div>
             </div>
         </div>
